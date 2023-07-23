@@ -59,10 +59,8 @@ configured for accessing the Google Sheets, Sheety, Tequila and Twilio API.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
-
 
 ### Prerequisites
 To use the Script:
@@ -132,9 +130,11 @@ I recommend to use https://www.pythonanywhere.com/ to execute the script remotel
 ## Output:
 
 _Logs printed-out on terminal:_
+
 [![Product presentation][product-exec1]]()
 
 _SMS received on smartphone:_
+
 [![Product presentation][product-exec2]]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
