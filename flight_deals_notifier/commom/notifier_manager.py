@@ -1,9 +1,13 @@
+import os
 from twilio.rest import Client
+from dotenv import load_dotenv
 
-TWILIO_SID = "ABCDEFGHIJLMNOPQ123"  # Your Twilio account SID
-TWILIO_AUTH_TOKEN = "1234567890ABCD"  # Your Twilio token
-TWILIO_VIRTUAL_NUMBER = "+15551234567"  # Your Twilio virtual number created
-TWILIO_VERIFIED_NUMBER = "+15557654321"  # Your phone number verified by Twilio
+# Load env credentials
+load_dotenv()
+twilio_sid = os.getenv('TWILIO_SID')  # Your Twilio account SID
+twilio_auth_token = os.getenv('TWILIO_AUTH_TOKEN')  # Your Twilio token
+twilio_virtual_number = os.getenv('TWILIO_VIRTUAL_NUMBER')  # Your Twilio virtual number created
+twilio_verified_number = os.getenv('TWILIO_VERIFIED_NUMBER')  # Your phone number verified by Twilio
 
 
 class NotificationManager:
@@ -19,10 +23,10 @@ class NotificationManager:
         2. Call the `send_sms` method with the desired message to send an SMS notification.
 
     Attributes:
-        TWILIO_SID (str): Your Twilio account SID.
-        TWILIO_AUTH_TOKEN (str): Your Twilio authentication token.
-        TWILIO_VIRTUAL_NUMBER (str): Your Twilio virtual number from which the SMS will be sent.
-        TWILIO_VERIFIED_NUMBER (str): Your phone number verified by Twilio.
+        twilio_sid (str): Your Twilio account SID.
+        twilio_auth_token (str): Your Twilio authentication token.
+        twilio_virtual_number (str): Your Twilio virtual number from which the SMS will be sent.
+        twilio_verified_number (str): Your phone number verified by Twilio.
 
     Methods:
         send_sms(message: str) -> None:
@@ -38,7 +42,7 @@ class NotificationManager:
         Initializes the NotificationManager with the Twilio client using the provided credentials.
         """
 
-        self.client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
+        self.client = Client(twilio_sid, twilio_auth_token)
 
     def send_sms(self, message):
         """
@@ -49,8 +53,8 @@ class NotificationManager:
         """
 
         message = self.client.messages.create(
-            from_=TWILIO_VIRTUAL_NUMBER,
-            to=TWILIO_VERIFIED_NUMBER,
+            from_=twilio_virtual_number,
+            to=twilio_verified_number,
             body=message
         )
-        print(f"MSG Log: SMS sent: {message.sid}")  # print if successfully sent.
+        print(f"MSG Log: SMS sent token: {message.sid}")  # print if successfully sent.

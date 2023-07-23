@@ -1,6 +1,10 @@
-import requests
+import requests, os
+from dotenv import load_dotenv
 
-SHEETY_ENDPOINT = "https://api.sheety.co/a429f8731234567890ABCD3890957fd9c2/flightDeals/prices"
+
+# Load sensitive content
+load_dotenv()
+sheety_endpoint = os.getenv('SHEETY_ENDPOINT')
 
 
 class DataManager:
@@ -16,7 +20,7 @@ class DataManager:
         3. Call the `update_iata_codes` method to update IATA codes for each city without one.
 
     Attributes:
-        SHEETY_ENDPOINT (str): The API endpoint for the Sheety service.
+        sheety_endpoint (str): The API endpoint for the Sheety service.
 
     Methods:
         get_sheet_data() -> dict:
@@ -44,7 +48,7 @@ class DataManager:
         Returns:
             dict: A dictionary containing the retrieved data.
         """
-        response = requests.get(url=SHEETY_ENDPOINT)
+        response = requests.get(url=sheety_endpoint)
         data = response.json()
         self.sheet_data = data["prices"]
         return self.sheet_data
@@ -61,4 +65,4 @@ class DataManager:
                     "destinationCode": city["destinationCode"]
                 }
             }
-            requests.put(url=f"{SHEETY_ENDPOINT}/{city['id']}", json=new_data)
+            requests.put(url=f"{sheety_endpoint}/{city['id']}", json=new_data)

@@ -1,9 +1,11 @@
-import requests
-from flight_data import FlightData
+import requests, os
+from dotenv import load_dotenv
+from flight_deals_notifier.commom.flight_data import FlightData
 
-TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
-TEQUILA_API_KEY = "1234567890ABCD"  # Your tequila API
-
+# Load env credentials
+load_dotenv()
+tequila_endpoint = os.getenv('TEQUILA_ENDPOINT')
+tequila_api_key = os.getenv('TEQUILA_API_KEY')
 
 class FlightSearch:
     """
@@ -18,8 +20,8 @@ class FlightSearch:
         3. Call the `check_flight_deals` method to search for flight deals based on specific criteria.
 
     Attributes:
-        TEQUILA_ENDPOINT (str): The base URL for the Kiwi/Tequila API.
-        TEQUILA_API_KEY (str): Your Kiwi Tequila API key.
+        tequila_endpoint (str): The base URL for the Kiwi/Tequila API.
+        tequila_api_key (str): Your Kiwi Tequila API key.
 
     Methods:
         get_iata_code(city_name: str) -> str:
@@ -45,8 +47,8 @@ class FlightSearch:
                  If the city is not found, it will print an error message and return None.
         """
 
-        location_endpoint = f"{TEQUILA_ENDPOINT}/locations/query"
-        headers = {"apikey": TEQUILA_API_KEY}
+        location_endpoint = f"{tequila_endpoint}/locations/query"
+        headers = {"apikey": tequila_api_key}
         query = {"term": city_name, "location_types": "airport"}
 
         try:
@@ -73,8 +75,8 @@ class FlightSearch:
                         If no flights are found, it will print a log message and return None.
         """
 
-        search_endpoint = f"{TEQUILA_ENDPOINT}/v2/search"
-        headers = {"apikey": TEQUILA_API_KEY}
+        search_endpoint = f"{tequila_endpoint}/v2/search"
+        headers = {"apikey": tequila_api_key}
         query = {
             "fly_from": departure_code,
             "fly_to": arrival_code,

@@ -9,9 +9,9 @@ configured for accessing the Google Sheets, Sheety, and Twilio API.
 """
 
 # Import the necessary modules
-from data_manager import DataManager
-from flight_search import FlightSearch
-from notifier_manager import NotificationManager
+from flight_deals_notifier.commom.data_manager import DataManager
+from flight_deals_notifier.commom.flight_search import FlightSearch
+from flight_deals_notifier.commom.notifier_manager import NotificationManager
 
 # Create instances of the required classes
 flight_search = FlightSearch()
