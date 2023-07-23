@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <h3 align="center">Flight Deal Notifier Script</h3>
-
+  <img src="images/banner.png">
   <p align="center">
     <br />
     <a href="https://github.com/sschuckk/flight-deals-notifier/issues">Report Bug</a>
@@ -51,7 +51,7 @@ With this, you can define a date range, specify the cities you want to visit, an
 **Note:** Before running this script, ensure that the necessary credentials and environment variables are properly
 configured for accessing the Google Sheets, Sheety, Tequila and Twilio API.
 
-[![Product presentation][product-banner]](https://github.com/sschuckk/selenium-webtest-booking)
+
 
 ### Built With
 
@@ -100,6 +100,8 @@ To use the APIs:
           TWILIO_VIRTUAL_NUMBER
           TWILIO_VERIFIED_NUMBER
    ```
+   Note: Create an .env file in the root of project and add your credentials e sensitive content to these variables. 
+   
    <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
