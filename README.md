@@ -84,7 +84,7 @@ To use the APIs:
    pip install -r requirements.txt
    ```
 3. Download the flight deals sheet file and upload it to your Google Docs. 
-   https://github.com/sschuckk/flight-deals-notifier/blob/main/Flight%20Deals.xlsx
+   https://github.com/sschuckk/flight-deals-notifier/blob/main/data/flight_deals.xlsx
 
 
 4. Use your API credentials in these variables:
